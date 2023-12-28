@@ -8,23 +8,28 @@ class User(models.Model):
     phone = models.CharField(max_length=100)
     website = models.CharField(max_length=100)
     company = models.CharField(max_length=100)
-    UserId = models.CharField(max_length=100)
-    title = models.CharField(max_length=100)
-    completed = models.BooleanField
-    
     def __str__(self):
         return self.name
     
 class Post(models.Model):
-    User = models.ForeignKey(User, on_delete = models.CASCADE)
+    userId = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
     body = models.CharField(max_length=100)
-    ano = models.IntegerField()
     def __str__(self):
-        return self.name
+        return self.title
+
 
 class Todo(models.Model):
-    album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    nome = models.CharField(max_length=100)
-    segundos = models.IntegerField()
+    UserId = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    completed = models.BooleanField
+    def __str__(self):
+        return self.title
+
+class Comment(models.Model):
+    postId = models.ForeignKey(Post, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    body = models.CharField(max_length=100)
     def __str__(self):
         return self.name
