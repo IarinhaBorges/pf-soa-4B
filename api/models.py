@@ -10,22 +10,20 @@ class User(models.Model):
     company = models.CharField(max_length=100)
     def __str__(self):
         return self.name
-    
+
+class Todo(models.Model):
+    userId = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    completed = models.BooleanField
+    def __str__(self):
+        return self.title
+
 class Post(models.Model):
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     body = models.CharField(max_length=100)
     def __str__(self):
         return self.title
-
-
-class Todo(models.Model):
-    UserId = models.CharField(max_length=100)
-    title = models.CharField(max_length=100)
-    completed = models.BooleanField
-    def __str__(self):
-        return self.title
-
 class Comment(models.Model):
     postId = models.ForeignKey(Post, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
