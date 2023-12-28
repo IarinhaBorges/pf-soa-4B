@@ -1,7 +1,32 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import viewsets
+from .models import User, Post, Todo, Comment
+from .serializer import UserSerializer, PostSerializer, TodoSerializer, CommentSerializer
 
-def index(request):
-    return 
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    Permite a manipulação de dados de Artistas
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
-# Create your views here.
+class PostViewSet(viewsets.ModelViewSet):
+    """
+    Permite a manipulação de dados de Albuns
+    """
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class TodoViewSet(viewsets.ModelViewSet):
+    """
+    Permite a manipulação de dados de Músicas
+    """
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
+
+class CommentViewSet(viewsets.ModelViewSet):
+    """
+    Permite a manipulação de dados de Músicas
+    """
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
