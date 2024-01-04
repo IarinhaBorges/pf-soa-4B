@@ -18,5 +18,5 @@ class TodoSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Todo
+        model = Comment
         fields = '__all__'
