@@ -12,16 +12,16 @@ router.register(r'todos', views.TodoViewSet)
 router.register(r'comments', views.CommentViewSet)
 router.register(r'posts', views.PostViewSet)
 
-users_router = routers.NestedSimpleRouter(router, r'users', lookup='user')
+users_router = routers.NestedSimpleRouter(router, r'users', lookup='User')
 users_router.register(r'users', views.UserViewSet)
 
-todos_router = routers.NestedSimpleRouter(router, r'users', lookup='user')
+todos_router = routers.NestedSimpleRouter(router, r'todos', lookup='Todo')
 todos_router.register(r'todos', views.TodoViewSet)
 
-posts_router = routers.NestedSimpleRouter(router, r'users', lookup='user')
+posts_router = routers.NestedSimpleRouter(router, r'posts', lookup='Post')
 posts_router.register(r'posts', views.PostViewSet)
 
-comments_router = routers.NestedSimpleRouter(router, r'posts', lookup='post')
+comments_router = routers.NestedSimpleRouter(router, r'comments', lookup='Comment')
 comments_router.register(r'comments', views.CommentViewSet)
 
 # domains_router = routers.NestedSimpleRouter(router, r'domains', lookup='domain')
